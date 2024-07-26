@@ -39,7 +39,9 @@ import meta.states.*;
 import meta.states.substate.*;
 import gameObjects.*;
 import gameObjects.shader.*;
+#if desktop
 import meta.data.Discord.DiscordClient;
+#end
 
 using StringTools;
 
@@ -272,15 +274,15 @@ class TitleState extends MusicBeatState
 		logoBl.shader = swagShader.shader;
 
 		titleText = new FlxSprite(titleJSON.startx, titleJSON.starty);
-		#if (desktop && MODS_ALLOWED)
+		#if (MODS_ALLOWED)
 		var path = "content/" + Paths.currentModDirectory + "/images/titleEnter.png";
 		//trace(path, FileSystem.exists(path));
 		if (!FileSystem.exists(path)){
-			path = "content/images/titleEnter.png";
+			path = Sys.getCwd() + "content/images/titleEnter.png";
 		}
 		//trace(path, FileSystem.exists(path));
 		if (!FileSystem.exists(path)){
-			path = "assets/images/titleEnter.png";
+			path = Sys.getCwd() + "assets/images/titleEnter.png";
 		}
 		//trace(path, FileSystem.exists(path));
 		titleText.frames = FlxAtlasFrames.fromSparrow(BitmapData.fromFile(path),File.getContent(StringTools.replace(path,".png",".xml")));
