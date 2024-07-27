@@ -291,7 +291,16 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		option.text = text.replace('%v', val).replace('%d', def);
 	}
 
-	function clearHold()
+	override function closeSubState() {
+		super.closeSubState();
+                removeVirtualPad();
+		#if mobile
+                addVirtualPad(LEFT_FULL, A_B_C);
+		addVirtualPadCamera(false);
+                #end
+	}
+      
+        function clearHold()
 	{
 		if(holdTime > 0.5) {
 			FlxG.sound.play(Paths.sound('scrollMenu'));
