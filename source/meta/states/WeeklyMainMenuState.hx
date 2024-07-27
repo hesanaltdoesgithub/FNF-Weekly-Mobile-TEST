@@ -23,9 +23,7 @@ import lime.app.Application;
 import gameObjects.*;
 import meta.data.WeekData;
 import meta.data.*;
-#if desktop
 import meta.data.Discord.DiscordClient;
-#end
 import meta.data.options.*;
 import meta.states.*;
 import meta.states.editors.*;
@@ -40,7 +38,6 @@ class WeeklyMainMenuState extends MusicBeatState
 	public static var psychEngineVersion:String = 'Tweak 5.1'; //MAKE SURE THIS IS UP TO DATE SINCE IT MATTERS FOR AUTO UPDATING !!!!
 	//public static var curSelected:Int = 0;
 	var canClick:Bool = true;
-	var qqqeb:Bool = false;
 	var norbertcanIdle:Bool = false; // dumb and gay my b
 
 	var optionGrp:Null<FlxTypedGroup<FlxSprite>> = null;
@@ -261,20 +258,11 @@ class WeeklyMainMenuState extends MusicBeatState
 		}
 		if (optionGrp != null) {
 			for(i in optionGrp.members){ 
-				for (touch in FlxG.touches.list)
-				{
-				if(touch.overlaps(i) && touch.justPressed){
+				if(FlxG.mouse.overlaps(i)){
 					i.animation.play('hover');
-					
-				}
-				else if (touch.overlaps(i) && touch.justPressed && canClick && i.animation.play('hover')) 
-				{
-				selectOption(i.ID);
-				}
-				else if (!touch.overlaps(i))
-				{
+					if(FlxG.mouse.justPressed && canClick) selectOption(i.ID);
+				}else{
 					i.animation.play('idle');
-				}
 				}
 			}
 		}
