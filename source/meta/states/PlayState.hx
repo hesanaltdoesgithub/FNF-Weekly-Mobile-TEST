@@ -1414,6 +1414,11 @@ class PlayState extends MusicBeatState
 		topBar.cameras = [camOther];
 		bottomBar.cameras = [camOther];
 
+		#if mobile
+                addMobileControls(false);
+                mobileControls.visible = false;
+                #end
+
 		setOnScripts('playFields', playFields);
 		setOnScripts('grpNoteSplashes', grpNoteSplashes);
 		setOnScripts('notes', notes);
@@ -2075,6 +2080,9 @@ class PlayState extends MusicBeatState
 		if(ret != Globals.Function_Stop) {
 			if (skipCountdown || startOnTime > 0) skipArrowStartTween = true;
 
+			#if mobile
+			mobileControls.visible = true;
+			#end
 			//generateStaticArrows(0, skipArrowStartTween );
 			//generateStaticArrows(1, skipArrowStartTween );
 
@@ -3217,7 +3225,7 @@ class PlayState extends MusicBeatState
 		// 	botplayTxt.alpha = 1 - Math.sin((Math.PI * botplaySine) / 180);
 		// }
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (controls.PAUSE #if android || FlxG.android.justReleased.BACK #end && startedCountdown && canPause)
 		{
 			var ret:Dynamic = callOnScripts('onPause', []);
 			if(ret != Globals.Function_Stop) {
@@ -4371,6 +4379,10 @@ class PlayState extends MusicBeatState
 
 		deathCounter = 0;
 		seenCutscene = false;
+
+		#if mobile
+		mobileControls.visible = false;
+		#end
 
 		#if ACHIEVEMENTS_ALLOWED
 		if(achievementObj != null) {
