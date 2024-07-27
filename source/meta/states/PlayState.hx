@@ -5446,6 +5446,8 @@ class PlayState extends MusicBeatState
 		#if HIT_SINGLE
 		Yoshi.resume();
 		#end
+
+		qqqeb = false;
 		super.destroy();
 	}
 
@@ -5811,11 +5813,6 @@ class PlayState extends MusicBeatState
 		return null;
 	}
 	#end
-
-	override function destroy() {
-		qqqeb = false;
-		super.destroy();
-	}
 		
 	override public function switchTo(nextState:Dynamic){
 		if(isPixelStage != stageData.isPixelStage)
