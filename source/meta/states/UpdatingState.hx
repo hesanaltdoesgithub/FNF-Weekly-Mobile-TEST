@@ -187,7 +187,7 @@ class UpdatingState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
         if(!leftState) {
-            if(controls.BACK) {
+            if(controls.BACK #if android || FlxG.android.justReleased.BACK #end) {
                 stream.removeEventListener(ProgressEvent.PROGRESS, onProgressWrite);
                 stream.removeEventListener(ProgressEvent.PROGRESS, showProgress);
                 stream.removeEventListener(Event.COMPLETE, onEnddl);
