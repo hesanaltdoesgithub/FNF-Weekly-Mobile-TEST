@@ -98,13 +98,9 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
-		// #if !debug
-		// #if HIT_SINGLE
-		// initialState = meta.states.HitSingleInit;
-		// #else
-		// initialState = TitleState;		
-		// #end
-		// #end
+		#if mobile
+		Storage.copyNecessaryFiles();
+		#end
 
 		ClientPrefs.loadDefaultKeys();
 		addChild(new FNFGame(gameWidth, gameHeight, initialState, #if(flixel < "5.0.0")zoom,#end framerate, framerate, skipSplash, startFullscreen));
