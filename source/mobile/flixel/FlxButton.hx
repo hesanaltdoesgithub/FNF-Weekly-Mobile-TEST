@@ -13,7 +13,7 @@ import flixel.input.touch.FlxTouch;
 import flixel.math.FlxPoint;
 import flixel.text.FlxText;
 import flixel.util.FlxDestroyUtil;
-import flixel.sound.FlxSound;
+import flixel.system.FlxSound;
 
 /**
  * A simple button class that calls a function when clicked by the touch.
