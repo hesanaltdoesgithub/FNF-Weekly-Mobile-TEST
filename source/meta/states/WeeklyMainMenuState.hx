@@ -276,7 +276,7 @@ class WeeklyMainMenuState extends MusicBeatState
 			}
 		}
 
-		if (controls.BACK )
+		if (controls.BACK #if android || FlxG.android.justReleased.BACK #end)
 		{
 			canClick = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
