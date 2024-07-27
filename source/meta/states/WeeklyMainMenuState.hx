@@ -266,7 +266,9 @@ class WeeklyMainMenuState extends MusicBeatState
 					i.animation.play('hover');
 				}
 					
-				else if {(touch.overlaps(i) && touch.justPressed && canClick) selectOption(i.ID);
+				else if (touch.overlaps(i) && touch.justPressed && canClick) 
+				{
+				selectOption(i.ID);
 				}
 				}else{
 					i.animation.play('idle');
