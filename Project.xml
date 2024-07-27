@@ -74,6 +74,8 @@
 	<assets path="assets/songs"         library="songs" unless="HIT_SINGLE"/>
 	<assets path="assets/shared"        library="shared"/>
 
+	<assets path="mobile" rename="assets/mobile" if="mobile"/>
+	
 	<assets path='content' embed='false' if="MODS_ALLOWED"/>
 
 
