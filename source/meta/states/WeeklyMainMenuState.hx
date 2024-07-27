@@ -270,8 +270,9 @@ class WeeklyMainMenuState extends MusicBeatState
 				{
 				selectOption(i.ID);
 				}
-				}else{
+				else{
 					i.animation.play('idle');
+				}
 				}
 			}
 		}
