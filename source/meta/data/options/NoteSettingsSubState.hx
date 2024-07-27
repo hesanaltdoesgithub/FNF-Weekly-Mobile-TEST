@@ -53,10 +53,13 @@ class NoteSettingsSubState extends BaseOptionsMenu
 		option.callback = function(){
 			switch(ClientPrefs.noteSkin){
 				case 'Quants':
+					removeVirtualPad();
 					openSubState(new QuantNotesSubState());
 				case 'QuantStep':
+					removeVirtualPad();
 					openSubState(new QuantNotesSubState());
 				default:
+					removeVirtualPad();
 					openSubState(new NotesSubState());
 			}
 		}
