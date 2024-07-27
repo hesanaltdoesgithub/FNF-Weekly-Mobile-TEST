@@ -42,6 +42,11 @@ class ClientPrefs {
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
+	public static var padalpha:Float = 0.6;
+	public static var hitboxalpha:Float = 0.5;
+	public static var mobileCEx:Bool = false;
+	public static var hitboxType:String = "Gradient";
+	public static var hitboxPos:Bool = true;
 	public static var camMovement:Bool = true;
 	public static var checkForUpdates:Int = 2;
 	public static var noteOffset:Int = 0;
@@ -173,6 +178,11 @@ class ClientPrefs {
 		FlxG.save.data.chartPresets = chartPresets;
 
 		FlxG.save.data.downScroll = downScroll;
+		FlxG.save.data.hitboxalpha = hitboxalpha;
+		FlxG.save.data.padalpha = padalpha;
+		FlxG.save.data.mobileCEx = mobileCEx;
+		FlxG.save.data.hitboxType = hitboxType;
+		FlxG.save.data.hitboxPos = hitboxPos;
 		FlxG.save.data.middleScroll = middleScroll;
 		FlxG.save.data.opponentStrums = opponentStrums;
 		FlxG.save.data.showFPS = showFPS;
@@ -254,6 +264,15 @@ class ClientPrefs {
 		if(FlxG.save.data.chartPresetList != null){
 			chartPresetList = FlxG.save.data.chartPresetList;
 		}
+		if(FlxG.save.data.mobileCEx != null) {
+			mobileCEx = FlxG.save.data.mobileCEx;
+		}
+		if(FlxG.save.data.hitboxType != null) {
+			hitboxType = FlxG.save.data.hitboxType;
+		}
+		if(FlxG.save.data.hitboxPos != null) {
+			hitboxPos = FlxG.save.data.hitboxPos;
+		}
 		if(FlxG.save.data.chartPresets != null){
 			chartPresets = FlxG.save.data.chartPresets;
 		}
@@ -262,6 +281,12 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.middleScroll != null) {
 			middleScroll = FlxG.save.data.middleScroll;
+		}
+		if(FlxG.save.data.hitboxalpha != null) {
+			hitboxalpha = FlxG.save.data.hitboxalpha;
+		}
+		if(FlxG.save.data.padalpha != null) {
+			padalpha = FlxG.save.data.padalpha;
 		}
 		if(FlxG.save.data.opponentStrums != null) {
 			opponentStrums = FlxG.save.data.opponentStrums;
