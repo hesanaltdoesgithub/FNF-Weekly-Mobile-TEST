@@ -270,7 +270,8 @@ class WeeklyMainMenuState extends MusicBeatState
 				{
 				selectOption(i.ID);
 				}
-				else{
+				else if (!touch.overlaps(i))
+				{
 					i.animation.play('idle');
 				}
 				}
