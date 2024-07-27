@@ -31,7 +31,7 @@ class FlxHitbox extends FlxSpriteGroup
 	 * @param perHintHeight The height that the hints will use.
 	 * @param colors The color per hint.
 	 */
-	public function new(ammo:UInt, perHintWidth:Int, perHintHeight:Float, colors:Array<FlxColor>):Void
+	public function new(ammo:UInt, perHintWidth:Int, perHintHeight:Int, colors:Array<FlxColor>):Void
 	{
 		super();
 
