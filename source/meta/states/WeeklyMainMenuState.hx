@@ -260,16 +260,23 @@ class WeeklyMainMenuState extends MusicBeatState
 		}
 		if (optionGrp != null) {
 			for(i in optionGrp.members){ 
-				if(FlxG.mouse.overlaps(i)){
+				for (touch in FlxG.touches.list)
+				{
+				if(touch.overlaps(i) && touch.justPressed){
 					i.animation.play('hover');
-					if(FlxG.mouse.justPressed && canClick) selectOption(i.ID);
+					
+				else
+				{
+				if(touch.justPressed && canClick) selectOption(i.ID);
+				}
 				}else{
 					i.animation.play('idle');
+				}
 				}
 			}
 		}
 
-		if (controls.BACK)
+		if (controls.BACK )
 		{
 			canClick = false;
 			FlxG.sound.play(Paths.sound('cancelMenu'));
