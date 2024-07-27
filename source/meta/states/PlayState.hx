@@ -725,6 +725,16 @@ class PlayState extends MusicBeatState
 
 		setOnScripts('stage', stage);
 
+		switch (curStage)
+		{
+			case 'zoi':
+                        qqqeb = true;
+			case 'stage':
+			qqqeb = true;
+		}
+			
+
+
 		#if loadBenchmark
 		var startLoadTime = Sys.time();
 		#end
@@ -5802,6 +5812,11 @@ class PlayState extends MusicBeatState
 	}
 	#end
 
+	override function destroy() {
+		qqqeb = false;
+		super.destroy();
+	}
+		
 	override public function switchTo(nextState:Dynamic){
 		if(isPixelStage != stageData.isPixelStage)
 			isPixelStage = stageData.isPixelStage;
