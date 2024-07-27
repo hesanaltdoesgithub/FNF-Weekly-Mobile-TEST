@@ -8,6 +8,7 @@ import mobile.flixel.FlxButton;
 import openfl.display.BitmapData;
 import openfl.display.Shape;
 import openfl.geom.Matrix;
+import meta.data.ClientPrefs;
 
 /**
  * A zone with 4 hint's (A hitbox).
