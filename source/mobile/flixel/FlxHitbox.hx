@@ -104,7 +104,7 @@ class FlxHitbox extends FlxSpriteGroup
 	{
 		var guh:Float = ClientPrefs.hitboxalpha;
 		if (guh >= 0.9)
-			guh = ClientPrefs.ClientPrefs.hitboxalpha - 0.07;
+			guh = ClientPrefs.hitboxalpha - 0.07;
 		var shape:Shape = new Shape();
 		shape.graphics.beginFill(Color);
 		if (ClientPrefs.hitboxType == "No Gradient")
