@@ -114,6 +114,11 @@ class ControlsSubState extends MusicBeatSubstate {
 			}
 		}
 		changeSelection();
+
+		#if android
+                addVirtualPad(LEFT_FULL, A_B);
+                addVirtualPadCamera(false);
+                #end
 	}
 
 	var leaving:Bool = false;
