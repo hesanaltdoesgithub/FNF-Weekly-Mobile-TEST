@@ -40,6 +40,7 @@ class WeeklyMainMenuState extends MusicBeatState
 	public static var psychEngineVersion:String = 'Tweak 5.1'; //MAKE SURE THIS IS UP TO DATE SINCE IT MATTERS FOR AUTO UPDATING !!!!
 	//public static var curSelected:Int = 0;
 	var canClick:Bool = true;
+	var qqqeb:Bool = false;
 	var norbertcanIdle:Bool = false; // dumb and gay my b
 
 	var optionGrp:Null<FlxTypedGroup<FlxSprite>> = null;
@@ -266,7 +267,7 @@ class WeeklyMainMenuState extends MusicBeatState
 					i.animation.play('hover');
 					
 				}
-				else if (touch.overlaps(i) && touch.justPressed && canClick) 
+				else if (touch.overlaps(i) && touch.justPressed && canClick && i.animation.play('hover')) 
 				{
 				selectOption(i.ID);
 				}
