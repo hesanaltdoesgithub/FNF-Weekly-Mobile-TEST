@@ -50,7 +50,7 @@ class CrashReportSubstate extends FlxState {
 		report.borderSize = 1.5;
 		add(report);
 
-		underText = new FlxText(0, FlxG.height - 64, FlxG.width, "Press SPACE to return to the Menu Screen.");
+		underText = new FlxText(0, FlxG.height - 64, FlxG.width, "Press A to return to the Menu Screen.");
 		underText.setFormat(Paths.font('vcr.ttf'), 24, 0xFFFFFFFF, CENTER, OUTLINE, 0xFF000000);
 		underText.y = FlxG.height - underText.height - 16;
 		underText.borderSize = 1;
@@ -59,7 +59,12 @@ class CrashReportSubstate extends FlxState {
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.6, {ease: FlxEase.cubeOut});
 
-		this.camera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
+		#if android
+                addVirtualPad(NONE, A);
+                addVirtualPadCamera(false);
+                #end
+	    
+	        this.camera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
     }
 
 	override function update(elapsed:Float):Void {
