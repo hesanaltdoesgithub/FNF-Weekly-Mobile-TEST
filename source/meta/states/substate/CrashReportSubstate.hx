@@ -58,11 +58,6 @@ class CrashReportSubstate extends FlxState {
 		add(underText);
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.6, {ease: FlxEase.cubeOut});
-
-		#if android
-                addVirtualPad(NONE, A);
-                addVirtualPadCamera(false);
-                #end
 	    
 	        this.camera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
     }
