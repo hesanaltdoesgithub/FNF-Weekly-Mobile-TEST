@@ -37,8 +37,8 @@ class FPSCounter extends TextField
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
-		background = true;
-		backgroundColor = 0xFF000000;
+		//background = true;
+		//backgroundColor = 0xFF000000;
 
 		times = [];
 	}
