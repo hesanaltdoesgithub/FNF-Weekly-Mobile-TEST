@@ -1,6 +1,7 @@
 package mobile.backend;
 
 import lime.system.System as LimeSystem;
+import haxe.Exception;
 #if android
 import android.content.Context as AndroidContext;
 import android.widget.Toast as AndroidToast;
