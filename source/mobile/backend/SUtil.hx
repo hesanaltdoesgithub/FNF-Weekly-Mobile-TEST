@@ -26,8 +26,15 @@ using StringTools;
  */
 class SUtil
 {
-	public static function mkDirs(directory:String):Void
+	public static function createDirectories(directory:String):Void
 	{
+		try {
+			if (FileSystem.exists(directory) && FileSystem.isDirectory(directory))
+				return;
+		} catch (e:haxe.Exception) {
+			trace('Something went wrong while looking at directory. (${e.message})');
+		}
+
 		var total:String = '';
 		if (directory.substr(0, 1) == '/')
 			total = '/';
@@ -50,8 +57,8 @@ class SUtil
 					if (!FileSystem.exists(total))
 						FileSystem.createDirectory(total);
 				}
-				catch (e:haxe.Exception)
-					trace('Error while creating folder. (${e.message}');
+				catch (e:Exception)
+					trace('Error while creating directory. (${e.message}');
 			}
 		}
 	}
@@ -91,14 +98,10 @@ class SUtil
 	
 	public static function showPopUp(message:String, title:String):Void
 	{
-		#if (!ios || !iphonesim)
-		try
-		{
-			trace('$title - $message');
-			lime.app.Application.current.window.alert(message, title);
-		}
-		catch (e:Dynamic)
-			trace('$title - $message');
+		#if android
+		AndroidTools.showAlertDialog(title, message, {name: "OK", func: null}, null);
+		#elseif (!ios || !iphonesim)
+		lime.app.Application.current.window.alert(message, title);
 		#else
 		trace('$title - $message');
 		#end
