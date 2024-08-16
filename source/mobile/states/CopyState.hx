@@ -20,6 +20,8 @@ import flixel.util.FlxColor;
 import flixel.FlxSprite;
 import flixel.addons.transition.FlxTransitionableState;
 
+using StringTools;
+
 class CopyState extends MusicBeatState
 {
 	public static var locatedFiles:Array<String> = [];
