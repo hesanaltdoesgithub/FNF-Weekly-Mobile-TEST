@@ -5580,6 +5580,7 @@ class PlayState extends MusicBeatState
 				FlxG.camera.zoom += 0.015 * camZoomingMult;
 				camHUD.zoom += 0.03 * camZoomingMult;
 		}
+	   }
 
 		setOnScripts('curSection', curSection);
 		callOnScripts('onSectionHit', []);
