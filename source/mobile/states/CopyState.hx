@@ -6,6 +6,19 @@ import openfl.utils.Assets as OpenFLAssets;
 import flixel.addons.util.FlxAsyncLoop;
 import openfl.utils.ByteArray;
 import haxe.io.Path;
+import mobile.backend.SUtil;
+#if (target.threaded)
+import sys.thread.Thread;
+#end
+#if sys
+import sys.*;
+import sys.io.*;
+#end
+import flixel.FlxG;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
+import flixel.FlxSprite;
+import flixel.addons.transition.FlxTransitionableState;
 
 class CopyState extends MusicBeatState
 {
@@ -37,7 +50,7 @@ class CopyState extends MusicBeatState
 			return;
 		}
 
-		CoolUtil.showPopUp("Seems like you have some missing files that are necessary to run the game\nPress OK to begin the copy process", "Notice!");
+		SUtil.showPopUp("Seems like you have some missing files that are necessary to run the game\nPress OK to begin the copy process", "Notice!");
 		
 		shouldCopy = true;
 
@@ -76,7 +89,7 @@ class CopyState extends MusicBeatState
 			{
 				if (failedFiles.length > 0)
 				{
-					CoolUtil.showPopUp(failedFiles.join('\n'), 'Failed To Copy ${failedFiles.length} File.');
+					SUtil.showPopUp(failedFiles.join('\n'), 'Failed To Copy ${failedFiles.length} File.');
 					if (!FileSystem.exists('logs'))
 						FileSystem.createDirectory('logs');
 					File.saveContent('logs/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '-CopyState' + '.txt', failedFilesStack.join('\n'));
@@ -103,7 +116,7 @@ class CopyState extends MusicBeatState
 		{
 			var directory = Path.directory(file);
 			if (!FileSystem.exists(directory))
-				StorageUtil.createDirectories(directory);
+				SUtil.createDirectories(directory);
 			try
 			{
 				if (OpenFLAssets.exists(getFile(file)))
@@ -137,7 +150,7 @@ class CopyState extends MusicBeatState
 			if (fileData == null)
 				fileData = '';
 			if (!FileSystem.exists(directory))
-				StorageUtil.createDirectories(directory);
+				SUtil.createDirectories(directory);
 			File.saveContent(Path.join([directory, fileName]), fileData);
 		}
 		catch (e:haxe.Exception)
@@ -151,7 +164,7 @@ class CopyState extends MusicBeatState
 	{
 		switch (Path.extension(file))
 		{
-			case 'otf' | 'ttf':
+			case 'otf' | 'ttf' | 'otf' | 'ttf':
 				return ByteArray.fromFile(file);
 			default:
 				return OpenFLAssets.getBytes(file);
@@ -177,7 +190,7 @@ class CopyState extends MusicBeatState
 		
 		// removes unwanted assets
 		var assets = locatedFiles.filter(folder -> folder.startsWith('assets/'));
-		var mods = locatedFiles.filter(folder -> folder.startsWith('mods/'));
+		var mods = locatedFiles.filter(folder -> folder.startsWith('content/'));
 		locatedFiles = assets.concat(mods);
 
 		var filesToRemove:Array<String> = [];
