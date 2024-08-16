@@ -1,7 +1,6 @@
 package mobile.states;
 
 #if mobile
-import states.TitleState;
 import lime.utils.Assets as LimeAssets;
 import openfl.utils.Assets as OpenFLAssets;
 import flixel.addons.util.FlxAsyncLoop;
@@ -34,7 +33,7 @@ class CopyState extends MusicBeatState
 		checkExistingFiles();
 		if (maxLoopTimes <= 0)
 		{
-			MusicBeatState.switchState(new TitleState());
+			MusicBeatState.switchState(new Init());
 			return;
 		}
 
@@ -84,7 +83,7 @@ class CopyState extends MusicBeatState
 				}
 				canUpdate = false;
 				FlxG.sound.play(Paths.sound('confirmMenu')).onComplete = () -> {
-					MusicBeatState.switchState(new TitleState());
+					MusicBeatState.switchState(new Init());
 				};
 			}
 
