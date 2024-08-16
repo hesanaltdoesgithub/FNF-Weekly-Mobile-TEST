@@ -4,7 +4,6 @@ import flixel.FlxG;
 import openfl.text.TextField;
 import openfl.text.TextFormat;
 import openfl.system.System;
-import cpp.vm.Gc;
 
 /**
 	The FPS class provides an easy-to-use monitor to display
@@ -38,8 +37,8 @@ class FPSCounter extends TextField
 		autoSize = LEFT;
 		multiline = true;
 		text = "FPS: ";
-		//background = true;
-		//backgroundColor = 0xFF000000;
+		background = true;
+		backgroundColor = 0xFF000000;
 
 		times = [];
 	}
@@ -74,6 +73,6 @@ class FPSCounter extends TextField
 	}
 
 	inline function get_memoryMegas():Float {
-		return cast(Gc.memInfo64(0), UInt);
+		return cast(System.totalMemory, UInt);
 	}
 }
