@@ -127,6 +127,7 @@ class PlayState extends MusicBeatState
 
 	var noteRows:Array<Array<Array<Note>>> = [[],[]];
 
+	public var beatsPerZoom:Int = 4;
 	public var whosTurn:String = '';
 	public static var STRUM_X = 42;
 	public static var STRUM_X_MIDDLESCROLL = -278;
@@ -5572,11 +5573,12 @@ class PlayState extends MusicBeatState
 			setOnScripts('altAnim', SONG.notes[curSection].altAnim);
 			setOnScripts('gfSection', SONG.notes[curSection].gfSection);
 
-			if (camZooming && ClientPrefs.camZooms)
-			{
+			
+			if (beatsPerZoom == 0) beatsPerZoom = 4;
+		if (camZooming && ClientPrefs.camZooms && curBeat % beatsPerZoom == 0)
+		{
 				FlxG.camera.zoom += 0.015 * camZoomingMult;
 				camHUD.zoom += 0.03 * camZoomingMult;
-			}
 		}
 
 		setOnScripts('curSection', curSection);
