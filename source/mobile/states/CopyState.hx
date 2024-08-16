@@ -166,7 +166,7 @@ class CopyState extends MusicBeatState
 	{
 		switch (Path.extension(file))
 		{
-			case 'otf' | 'ttf' | 'otf' | 'ttf':
+			case 'otf' | 'ttf':
 				return ByteArray.fromFile(file);
 			default:
 				return OpenFLAssets.getBytes(file);
